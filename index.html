@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Música de cámara · Programa</title>
+<meta name="description" content="Programa del concierto. Sábado 28 de noviembre, 19.30 h. Catedral Anglicana San Juan Bautista.">
+<meta property="og:title" content="Música de cámara · Programa">
+<meta property="og:description" content="Sábado 28 de noviembre, 19.30 h · Catedral Anglicana San Juan Bautista, 25 de Mayo 276, CABA">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FBFAF6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 12 L16 4 L29 12 Z M6 13h3v13H6z M14.5 13h3v13h-3z M23 13h3v13h-3z M3 27h26v2H3z' fill='%232D4E3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-kerning: normal; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .page { max-width: 600px; margin: 0 auto; padding: 0 22px 56px; }
+  .vote { font: 500 12px/1 Archivo, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; text-align: center; padding: 9px; background: #111; color: #fff; }
+  .hero { padding: 44px 0 34px; }
+  .kick { text-transform: uppercase; letter-spacing: .16em; font-size: 12px; line-height: 1.5; }
+  h1 { font-weight: 400; }
+  .when { margin-top: 12px; }
+  .place { margin-top: 6px; line-height: 1.4; }
+  h2 { font-weight: 500; text-transform: uppercase; letter-spacing: .18em; font-size: 13px; margin: 40px 0 6px; }
+  ol.prog { list-style: none; }
+  ol.prog li { display: grid; grid-template-columns: 30px 1fr; padding: 20px 0; }
+  .num { font-size: 14px; padding-top: 3px; }
+  .comp { font-size: 19px; line-height: 1.25; }
+  .dates { font-size: 14px; white-space: nowrap; }
+  .obra { font-size: 18px; line-height: 1.3; margin-top: 4px; }
+  .det { font-size: 16px; line-height: 1.35; margin-top: 2px; }
+  .int { margin-top: 10px; font-size: 15px; line-height: 1.45; }
+  .int span { white-space: nowrap; }
+  .int em { font-style: italic; }
+  ul.perf { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 18px; margin-top: 14px; }
+  ul.perf li { font-size: 16px; line-height: 1.25; }
+  ul.perf em { display: block; font-size: 14px; }
+  footer { margin-top: 46px; padding-top: 18px; font-size: 14px; line-height: 1.55; }
+
+  /* ===== V1 · CARTEL ===== */
+  body.v1 { background: #F4F1EA; color: #171513; font-family: Archivo, sans-serif; }
+  .v1 .hero { border-bottom: 2px solid #171513; }
+  .v1 .kick { font-weight: 500; padding-bottom: 14px; border-bottom: 2px solid #171513; }
+  .v1 .date { display: flex; align-items: flex-end; gap: 18px; margin-top: 22px; }
+  .v1 .day { font-family: 'Libre Caslon Display', serif; font-size: 150px; line-height: .78; color: #7A1E2A; }
+  .v1 .dmeta { font-family: 'Libre Caslon Text', serif; font-size: 22px; line-height: 1.2; }
+  .v1 .dmeta i { color: #7A1E2A; }
+  .v1 h1 { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 46px; line-height: 1.05; margin-top: 26px; }
+  .v1 .when { display: none; }
+  .v1 .place { font-size: 16px; margin-top: 14px; }
+  .v1 .place b { font-weight: 600; }
+  .v1 h2 { color: #7A1E2A; }
+  .v1 ol.prog li { border-bottom: 1px solid #d4cec3; }
+  .v1 .num { color: #7A1E2A; font-family: 'Libre Caslon Text', serif; font-size: 18px; padding-top: 0; }
+  .v1 .comp { font-weight: 600; font-size: 17px; }
+  .v1 .dates { color: #6b645b; font-weight: 400; }
+  .v1 .obra, .v1 .det { font-family: 'Libre Caslon Text', serif; }
+  .v1 .obra { font-size: 19px; }
+  .v1 .det { color: #3d3833; }
+  .v1 .int { color: #4a443d; }
+  .v1 .int em, .v1 ul.perf em { font-family: 'Libre Caslon Text', serif; color: #6b645b; }
+  .v1 ul.perf li { font-weight: 500; }
+  .v1 footer { border-top: 2px solid #171513; color: #3d3833; }
+
+  /* ===== V2 · FACHADA ===== */
+  body.v2 { background: #FBFAF6; color: #1D2621; font-family: 'EB Garamond', serif; }
+  .v2 .hero { text-align: center; }
+  .v2 .fachada { width: min(300px, 78%); color: #2D4E3D; display: block; margin: 0 auto 22px; }
+  .v2 .kick { color: #2D4E3D; }
+  .v2 h1 { font-size: 50px; line-height: 1.02; margin-top: 8px; }
+  .v2 .when { font-size: 22px; }
+  .v2 .when i { color: #2D4E3D; font-style: normal; }
+  .v2 .place { font-size: 17px; }
+  .v2 .date { display: none; }
+  .v2 h2 { text-align: center; color: #2D4E3D; font-weight: 400; font-size: 14px; }
+  .v2 h2::after { content: ''; display: block; width: 56px; height: 1px; background: #2D4E3D; margin: 12px auto 0; }
+  .v2 ol.prog li { display: block; text-align: center; padding: 22px 0; }
+  .v2 ol.prog li + li { border-top: 1px solid #e2e3dc; }
+  .v2 .num { display: none; }
+  .v2 .comp { font-size: 15px; text-transform: uppercase; letter-spacing: .14em; color: #2D4E3D; }
+  .v2 .dates { letter-spacing: .04em; text-transform: none; color: #6a756e; }
+  .v2 .obra { font-size: 22px; margin-top: 6px; }
+  .v2 .det { font-size: 17px; color: #3a443e; }
+  .v2 .int { font-size: 16px; color: #3a443e; }
+  .v2 .int em, .v2 ul.perf em { color: #6a756e; }
+  .v2 ul.perf { text-align: center; }
+  .v2 ul.perf li { font-size: 17px; }
+  .v2 ul.perf em { font-size: 15px; }
+  .v2 footer { text-align: center; color: #3a443e; font-size: 15px; }
+  .v2 footer::before { content: ''; display: block; width: 56px; height: 1px; background: #2D4E3D; margin: 0 auto 20px; }
+
+  /* ===== V3 · NOCTURNO ===== */
+  body.v3 { background: #161F36; color: #ECE5D5; font-family: Newsreader, serif; }
+  .v3 .hero { position: relative; padding-top: 34px; }
+  .v3 .fachada { width: 100%; max-width: 420px; color: #E0A64C; display: block; margin: 0 0 26px auto; }
+  .v3 .kick { color: #E0A64C; }
+  .v3 h1 { font-weight: 300; font-size: 54px; line-height: .98; margin-top: 12px; }
+  .v3 h1 i { font-weight: 300; }
+  .v3 .when { font-size: 23px; margin-top: 18px; }
+  .v3 .when b { color: #E0A64C; font-weight: 400; }
+  .v3 .place { font-size: 17px; opacity: .88; }
+  .v3 .date { display: none; }
+  .v3 h2 { color: #E0A64C; font-weight: 400; }
+  .v3 ol.prog li { border-bottom: 1px solid rgba(236,229,213,.16); }
+  .v3 .num { color: #E0A64C; font-size: 15px; }
+  .v3 .comp { font-size: 20px; }
+  .v3 .dates { opacity: .6; }
+  .v3 .obra { font-size: 19px; }
+  .v3 .det { opacity: .85; }
+  .v3 .int { opacity: .78; }
+  .v3 ul.perf em { opacity: .62; }
+  .v3 footer { border-top: 1px solid rgba(236,229,213,.25); opacity: .9; }
+  .v3 footer .free { color: #E0A64C; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; margin-top: 12px; }
+
+  /* ===== V4 · GRILLA ===== */
+  body.v4 { background: #EEECE6; color: #141414; font-family: 'Schibsted Grotesk', sans-serif; }
+  .v4 .page { padding: 0 0 56px; }
+  .v4 .hero { background: #C4432B; color: #F7F3EC; padding: 34px 22px 30px; position: relative; overflow: hidden; }
+  .v4 .hero::after { content: ''; position: absolute; right: 22px; top: 0; height: 120px; width: 112px;
+    background: repeating-linear-gradient(90deg, rgba(247,243,236,.5) 0 1.5px, transparent 1.5px 22px); }
+  .v4 .kick { font-weight: 500; max-width: 64%; }
+  .v4 h1 { font-weight: 800; font-size: 50px; line-height: .98; letter-spacing: -.025em; margin-top: 70px; max-width: 75%; }
+  .v4 .when { font-size: 21px; font-weight: 500; margin-top: 14px; }
+  .v4 .when b { font-weight: 800; }
+  .v4 .place { font-size: 15px; opacity: .95; }
+  .v4 .date { display: none; }
+  .v4 main, .v4 footer { padding-left: 22px; padding-right: 22px; }
+  .v4 h2 { font-weight: 700; letter-spacing: .1em; color: #C4432B; }
+  .v4 ol.prog li { border-bottom: 2px solid #141414; grid-template-columns: 42px 1fr; }
+  .v4 ol.prog li:last-child { border-bottom: 0; }
+  .v4 .num { font-weight: 800; font-size: 26px; line-height: 1; color: #C4432B; padding-top: 0; }
+  .v4 .comp { font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: -.005em; }
+  .v4 .dates { font-weight: 400; color: #6a6862; text-transform: none; }
+  .v4 .obra { font-size: 18px; font-weight: 500; }
+  .v4 .det { color: #3c3a36; }
+  .v4 .int { color: #4a4843; }
+  .v4 .int em, .v4 ul.perf em { font-style: normal; color: #6a6862; }
+  .v4 ul.perf li { font-weight: 500; }
+  .v4 footer { border-top: 2px solid #141414; margin: 46px 22px 0; padding-left: 0; padding-right: 0; }
+  .v4 footer .free { font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-top: 12px; }
+
+  .free { margin-top: 10px; }
+
+  @media (min-width: 640px) {
+    .page { padding-top: 24px; }
+    .v1 .day { font-size: 190px; } .v1 h1 { font-size: 58px; }
+    .v2 h1, .v3 h1, .v4 h1 { font-size: 62px; }
+  }
+  @media print {
+    @page { size: A5; margin: 12mm 12mm 14mm; }
+    .vote { display: none; }
+    .page { max-width: none; padding: 0; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    ol.prog li { break-inside: avoid; padding: 9px 0; }
+    .hero { padding: 0 0 16px; }
+    .v4 .hero { padding: 18px 16px; } .v4 h1 { margin-top: 28px; }
+    h2 { margin-top: 18px; }
+    .comp { font-size: 13.5px; } .obra { font-size: 13.5px; } .det, .int { font-size: 11.5px; }
+    .v1 .day { font-size: 96px; } .v1 h1, .v2 h1, .v3 h1, .v4 h1 { font-size: 34px; }
+    .v2 .fachada { width: 170px; margin-bottom: 10px; } .v3 .fachada { max-width: 240px; }
+    .kick, .when, .place { font-size: 12px; } .v2 .when, .v3 .when { font-size: 15px; }
+    ul.perf li { font-size: 12px; } ul.perf em { font-size: 11px; }
+    footer { font-size: 11px; margin-top: 18px; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="datos.js"></script>
+<script>
+(function () {
+  const D = window.DATOS;
+  const q = new URLSearchParams(location.search).get('v');
+  const v = ['1','2','3','4'].includes(q) ? q : String(window.VERSION_POR_DEFECTO || 2);
+  document.body.className = 'v' + v;
+  const tc = { '1': '#F4F1EA', '2': '#FBFAF6', '3': '#161F36', '4': '#C4432B' }[v];
+  document.querySelector('meta[name=theme-color]').setAttribute('content', tc);
+
+  const nombres = { '1': 'Cartel', '2': 'Fachada', '3': 'Nocturno', '4': 'Grilla' };
+  const vote = (window.VOTACION && q) ? `<div class="vote">Versión ${v} · ${nombres[v]} (borrador para votar)</div>` : '';
+
+  const deco = {
+    '1': '', '2': window.fachada(1.6), '3': window.fachada(1.8), '4': '',
+  }[v];
+  const titulo = v === '3' ? 'Música<br><i>de cámara</i>' : D.titulo;
+  const when = v === '3'
+    ? `${D.dia} <b>28</b> de noviembre · ${D.hora}`
+    : v === '4' ? `${D.dia} <b>28.11</b> — ${D.hora}`
+    : `${D.dia} ${D.fecha} <i>·</i> ${D.hora}`;
+  const place = v === '1' ? `<b>${D.lugar}</b><br>${D.dir}` : `${D.lugar}<br>${D.dir}`;
+
+  const ints = arr => arr.map(([n, i]) => `<span>${n},&nbsp;<em>${i}</em></span>`).join('&nbsp;· ');
+  const prog = D.programa.map((p, k) => `
+    <li><span class="num">${k + 1}</span><div>
+      <p class="comp">${p.comp} <span class="dates">(${p.fechas})</span></p>
+      <p class="obra">${p.obra}</p>
+      ${p.detalle ? `<p class="det">${p.detalle}</p>` : ''}
+      <p class="int">${ints(p.int)}</p>
+    </div></li>`).join('');
+  const perf = D.interpretes.map(([n, i]) => `<li>${n}<em>${i}</em></li>`).join('');
+
+  document.getElementById('app').innerHTML = `${vote}
+  <div class="page">
+    <header class="hero">
+      ${deco}
+      <p class="kick">${D.marco}</p>
+      <div class="date"><div class="day">28</div><div class="dmeta">${D.dia}<br><i>noviembre</i><br>${D.hora}</div></div>
+      <h1>${titulo}</h1>
+      <p class="when">${when}</p>
+      <p class="place">${place}</p>
+    </header>
+    <main>
+      <h2>Programa</h2>
+      <ol class="prog">${prog}</ol>
+      <h2>Intérpretes</h2>
+      <ul class="perf">${perf}</ul>
+    </main>
+    <footer>
+      ${D.catedra}<br>${D.conser}
+      <div class="free">${D.entrada}</div>
+    </footer>
+  </div>`;
+})();
+</script>
+</body>
+</html>

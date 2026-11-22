@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartel QR · Programa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;700;800&display=block" rel="stylesheet">
+<style>
+  /* Cartel A4 vertical para la entrada de la iglesia. Imprimir al 100 %, sin márgenes. */
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #888; }
+  .sheet { width: 210mm; height: 297mm; margin: 0 auto; position: relative; overflow: hidden;
+           display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20mm 18mm 16mm; }
+  @media print { body { background: none; } }
+  .kick { text-transform: uppercase; letter-spacing: .18em; font-size: 11pt; }
+  h1 { font-weight: 400; line-height: 1; }
+  .card { background: #fff; padding: 6mm; margin-top: 10mm; }
+  .card img { display: block; width: 105mm; height: 105mm; }
+  .scan { margin-top: 9mm; font-size: 17pt; line-height: 1.3; }
+  .url { margin-top: 3mm; font-size: 12pt; letter-spacing: .02em; }
+  .foot { margin-top: auto; font-size: 12pt; line-height: 1.45; }
+  .fachada { display: block; }
+  .v2 .card img, .v3 .card img { width: 92mm; height: 92mm; }
+  .v2 .card, .v3 .card { margin-top: 8mm; }
+  .v2 .foot, .v3 .foot { padding-top: 8mm; }
+
+  /* V1 · Cartel */
+  .v1 .sheet { background: #F4F1EA; color: #171513; font-family: Archivo, sans-serif; }
+  .v1 .kick { font-weight: 500; color: #7A1E2A; }
+  .v1 h1 { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 64pt; margin-top: 10mm; }
+  .v1 .card { border: 1.2pt solid #171513; }
+  .v1 .scan { font-family: 'Libre Caslon Text', serif; }
+  .v1 .url { color: #7A1E2A; font-weight: 500; }
+  .v1 .foot b { font-weight: 600; }
+  .v1 .rule { width: 100%; border-top: 1.5pt solid #171513; margin-top: 8mm; }
+
+  /* V2 · Fachada */
+  .v2 .sheet { background: #FBFAF6; color: #1D2621; font-family: 'EB Garamond', serif; }
+  .v2 .fachada { width: 70mm; color: #2D4E3D; margin-bottom: 7mm; }
+  .v2 .kick { color: #2D4E3D; }
+  .v2 h1 { font-size: 66pt; margin-top: 4mm; }
+  .v2 .card { border: .8pt solid #2D4E3D; }
+  .v2 .url { color: #2D4E3D; }
+
+  /* V3 · Nocturno */
+  .v3 .sheet { background: #161F36; color: #ECE5D5; font-family: Newsreader, serif; }
+  .v3 .fachada { width: 78mm; color: #E0A64C; margin-bottom: 7mm; }
+  .v3 .kick { color: #E0A64C; }
+  .v3 h1 { font-weight: 300; font-size: 66pt; margin-top: 4mm; }
+  .v3 .card { border-radius: 2mm; }
+  .v3 .url { color: #E0A64C; }
+
+  /* V4 · Grilla */
+  .v4 .sheet { background: #EEECE6; color: #141414; font-family: 'Schibsted Grotesk', sans-serif; padding-top: 0; }
+  .v4 .band { width: calc(100% + 36mm); margin: 0 -18mm; background: #C4432B; color: #F7F3EC; padding: 16mm 18mm 12mm; text-align: left; position: relative; }
+  .v4 .band::after { content: ''; position: absolute; right: 18mm; top: 0; bottom: 0; width: 40mm;
+    background: repeating-linear-gradient(90deg, rgba(247,243,236,.5) 0 1.2pt, transparent 1.2pt 8mm); }
+  .v4 .kick { font-weight: 500; }
+  .v4 h1 { font-weight: 800; font-size: 68pt; letter-spacing: -.02em; margin-top: 8mm; }
+  .v4 .card { border: 2pt solid #141414; margin-top: 14mm; }
+  .v4 .scan { font-weight: 500; }
+  .v4 .url { color: #C4432B; font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="../datos.js"></script>
+<script>
+(function () {
+  const D = window.DATOS;
+  const q = new URLSearchParams(location.search).get('v');
+  const v = ['1','2','3','4'].includes(q) ? q : String(window.VERSION_POR_DEFECTO || 2);
+  document.body.className = 'v' + v;
+  const url = 'lucianoborgoglio.github.io/concierto-catedral';
+  const qr = `<div class="card"><img src="../qr/qr.svg" alt="Código QR del programa"></div>`;
+  const scan = `<p class="scan">Escaneá el código con la cámara<br>de tu celular para ver el programa</p><p class="url">${url}</p>`;
+  const foot = `<div class="foot"><b>${D.titulo}</b> · ${D.dia} ${D.fecha} · ${D.hora}<br>${D.catedra}<br>${D.conser}</div>`;
+  const body = {
+    '1': `<p class="kick">${D.marco}</p><h1>Programa</h1><div class="rule"></div>${qr}${scan}${foot}`,
+    '2': `${window.fachada(1.4)}<p class="kick">${D.marco}</p><h1>Programa</h1>${qr}${scan}${foot}`,
+    '3': `${window.fachada(1.6)}<p class="kick">${D.marco}</p><h1>Programa</h1>${qr}${scan}${foot}`,
+    '4': `<div class="band"><p class="kick">${D.marco}</p><h1>Programa</h1></div>${qr}${scan}${foot}`,
+  }[v];
+  document.getElementById('app').innerHTML = `<div class="sheet">${body}</div>`;
+})();
+</script>
+</body>
+</html>
