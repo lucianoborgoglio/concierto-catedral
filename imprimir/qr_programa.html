@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>QR Programa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&display=block" rel="stylesheet">
+<style>
+  /* A4 vertical, estética Nocturno. ?claro=1 → versión sobre blanco (ahorra tinta). */
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { width: 210mm; height: 297mm; margin: 0 auto; display: flex; flex-direction: column;
+           align-items: center; justify-content: center; text-align: center;
+           background: #161F36; color: #ECE5D5; font-family: Newsreader, serif; }
+  h1 { font-weight: 300; font-size: 54pt; letter-spacing: .14em; margin-right: -.14em; line-height: 1; }
+  .card { background: #fff; padding: 7mm; border-radius: 2mm; margin-top: 16mm; }
+  .card img { display: block; width: 120mm; height: 120mm; }
+  .url { margin-top: 12mm; font-size: 16pt; color: #E0A64C; letter-spacing: .02em; }
+  .claro .sheet { background: #fff; color: #161F36; }
+  .claro .card { border: .8pt solid #161F36; }
+  .claro .url { color: #161F36; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>PROGRAMA</h1>
+  <div class="card"><img src="../qr/qr.svg" alt="Código QR del programa"></div>
+  <p class="url">lucianoborgoglio.github.io/concierto-catedral</p>
+</div>
+<script>if (new URLSearchParams(location.search).get('claro')) document.body.className = 'claro';</script>
+</body>
+</html>

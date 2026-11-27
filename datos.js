@@ -5,11 +5,11 @@
 
 // Versión que se ve al escanear el QR (sin ?v=). Después de la votación,
 // poner acá el número ganador (1, 2, 3 o 4).
-window.VERSION_POR_DEFECTO = 2;
+window.VERSION_POR_DEFECTO = 3;
 
 // Mientras dure la votación se muestra una etiqueta "Versión N" arriba.
 // Poner en false cuando haya ganadora.
-window.VOTACION = true;
+window.VOTACION = false;
 
 window.DATOS = {
   marco: 'En el marco de La Noche de los Templos',
